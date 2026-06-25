@@ -79,7 +79,6 @@ This project was developed as part of the KhetHub Dashboard Challenge to demonst
 
 ## 📁 Project Structure
 
-```text
 KhetHub-Dashboard/
 │
 ├── index.html
