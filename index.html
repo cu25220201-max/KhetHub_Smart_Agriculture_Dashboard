@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KhetHub Smart Agriculture Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+
+
+<header class="header">
+
+<div class="left-header">
+
+<button class="menu-btn">
+<i class="fas fa-bars"></i>
+</button>
+
+<div class="search-box">
+<input type="text" placeholder="Search anything...">
+<i class="fas fa-search"></i>
+</div>
+
+</div>
+
+<div class="right-header">
+
+<div id="datetime"></div>
+
+<button id="darkModeBtn">
+🌙
+</button>
+
+<div class="profile">
+
+<img
+src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=200"
+alt="Farmer Profile">
+
+<div>
+<h4>Pratiksha Tomar</h4>
+<p>Tomar Farm</p>
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h1>🌱 KhetHub</h1>
+
+</div>
+
+<ul>
+
+<li onclick="showSection('dashboard')">
+<i class="fas fa-home"></i>
+Dashboard
+</li>
+
+<li onclick="showSection('overview')">
+<i class="fas fa-tractor"></i>
+Farm Overview
+</li>
+
+<li onclick="showSection('weather')">
+<i class="fas fa-cloud-sun"></i>
+Weather
+</li>
+
+<li onclick="showSection('crophealth')">
+<i class="fas fa-seedling"></i>
+Crop Health
+</li>
+
+<li onclick="showSection('soil')">
+<i class="fas fa-vial"></i>
+Soil Monitoring
+</li>
+
+<li onclick="showSection('irrigation')">
+<i class="fas fa-faucet"></i>
+Irrigation
+</li>
+
+<li onclick="showSection('alerts')">
+<i class="fas fa-bell"></i>
+Alerts
+</li>
+
+<li onclick="showSection('activities')">
+<i class="fas fa-calendar"></i>
+Activities
+</li>
+
+<li onclick="showSection('ai')">
+<i class="fas fa-robot"></i>
+AI Recommendations
+</li>
+
+<li onclick="showSection('reports')">
+<i class="fas fa-chart-bar"></i>
+Reports
+</li>
+
+</ul>
+
+</aside>
+
+
+<main>
+
+
+<section id="dashboard" class="page-section">
+
+
+<div class="cards">
+
+<div class="card">
+<h4>Farm Area</h4>
+<h2>25</h2>
+<p>Acres</p>
+</div>
+
+<div class="card">
+<h4>Active Crops</h4>
+<h2>4</h2>
+<p>Crops</p>
+</div>
+
+<div class="card">
+<h4>Soil Moisture</h4>
+<h2>68%</h2>
+<p>Good</p>
+</div>
+
+<div class="card">
+<h4>Temperature</h4>
+<h2>31°C</h2>
+<p>Hot</p>
+</div>
+
+<div class="card">
+<h4>Humidity</h4>
+<h2>72%</h2>
+<p>Moderate</p>
+</div>
+
+<div class="card">
+<h4>Crop Health</h4>
+<h2>Good</h2>
+<p>Healthy</p>
+</div>
+
+<div class="card">
+<h4>Irrigation</h4>
+<h2>Active</h2>
+<p>Running</p>
+</div>
+
+<div class="card">
+<h4>Expected Yield</h4>
+<h2>3.2</h2>
+<p>Ton/Acre</p>
+</div>
+
+</div>
+
+
+<div class="dashboard-grid">
+
+<div class="panel">
+
+<h2>Weather Update</h2>
+
+<p>🌤 Temperature : 31°C</p>
+<p>💧 Humidity : 72%</p>
+<p>🌬 Wind Speed : 12 km/h</p>
+<p>🌧 Rain Forecast : 2.4 mm</p>
+
+</div>
+
+<div class="panel">
+
+<h2>Crop Health Overview</h2>
+
+<canvas id="healthChart"></canvas>
+
+</div>
+
+<div class="panel">
+
+<h2>Soil Monitoring</h2>
+
+<label>Moisture</label>
+<progress value="68" max="100"></progress>
+
+<label>pH Level</label>
+<progress value="65" max="100"></progress>
+
+<label>Nitrogen</label>
+<progress value="78" max="100"></progress>
+
+<label>Phosphorus</label>
+<progress value="45" max="100"></progress>
+
+<label>Potassium</label>
+<progress value="85" max="100"></progress>
+
+</div>
+
+</div>
+
+
+<div class="charts">
+
+<div class="chart-box">
+<h3>Soil Moisture Trend</h3>
+<canvas id="moistureChart"></canvas>
+</div>
+
+<div class="chart-box">
+<h3>Temperature Trend</h3>
+<canvas id="tempChart"></canvas>
+</div>
+
+<div class="chart-box">
+<h3>Crop Yield Comparison</h3>
+<canvas id="yieldChart"></canvas>
+</div>
+
+<div class="chart-box">
+<h3>Water Usage</h3>
+<canvas id="waterChart"></canvas>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="overview"
+class="page-section"
+style="display:none;">
+
+<h1>Farm Overview</h1>
+
+<div class="panel">
+<p>Total Area : 25 Acres</p>
+<p>Current Season : Kharif</p>
+<p>Primary Crop : Rice</p>
+<p>Secondary Crop : Wheat</p>
+</div>
+
+</section>
+
+
+
+<section id="weather"
+class="page-section"
+style="display:none;">
+
+<h1>Weather Information</h1>
+
+<div class="panel">
+
+<p>Temperature : 31°C</p>
+<p>Humidity : 72%</p>
+<p>Wind Speed : 12 km/h</p>
+<p>Rain Forecast : 2.4 mm</p>
+
+</div>
+
+</section>
+
+
+
+<section id="crophealth"
+class="page-section"
+style="display:none;">
+
+<h1>Crop Health</h1>
+
+<div class="panel">
+
+<p>Healthy Crops : 85%</p>
+<p>Diseased Crops : 10%</p>
+<p>Others : 5%</p>
+
+</div>
+
+</section>
+
+
+
+<section id="soil"
+class="page-section"
+style="display:none;">
+
+<h1>Soil Monitoring</h1>
+
+<div class="panel">
+
+<p>Moisture : 68%</p>
+<p>pH : 6.5</p>
+<p>Nitrogen : 78 mg/kg</p>
+<p>Phosphorus : 45 mg/kg</p>
+<p>Potassium : 120 mg/kg</p>
+
+</div>
+
+</section>
+
+
+<section id="irrigation"
+class="page-section"
+style="display:none;">
+
+<h1>Irrigation Status</h1>
+
+<div class="panel">
+
+<p>Current Status : Active</p>
+<p>Next Schedule : 6 PM</p>
+<p>Water Usage : 45%</p>
+
+</div>
+
+</section>
+
+
+
+<section id="alerts"
+class="page-section"
+style="display:none;">
+
+<h1>Alerts</h1>
+
+<div class="alert">⚠ Low Moisture Alert</div>
+<div class="alert">🐛 Pest Alert</div>
+<div class="alert">🌧 Rain Alert</div>
+<div class="alert">🚜 Irrigation Reminder</div>
+
+</section>
+
+
+
+<section id="activities"
+class="page-section"
+style="display:none;">
+
+<h1>Recent Activities</h1>
+
+<table>
+
+<tr>
+<th>Date</th>
+<th>Activity</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>25 Jun 2026</td>
+<td>Irrigation</td>
+<td>Completed</td>
+</tr>
+
+<tr>
+<td>24 Jun 2026</td>
+<td>Fertilizer Application</td>
+<td>Pending</td>
+</tr>
+
+<tr>
+<td>23 Jun 2026</td>
+<td>Harvesting</td>
+<td>Completed</td>
+</tr>
+
+</table>
+
+</section>
+
+
+
+<section id="ai"
+class="page-section"
+style="display:none;">
+
+<h1>AI Recommendations</h1>
+
+<div class="ai-box">
+
+<h3>🌱 Recommendation</h3>
+
+<p>
+Soil moisture is low.
+Recommended irrigation:
+30 minutes.
+</p>
+
+<hr>
+
+<h3>🌾 Crop Suggestion</h3>
+
+<p>
+Based on weather forecast,
+Rice is suitable for plantation.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section id="reports"
+class="page-section"
+style="display:none;">
+
+<h1>Reports</h1>
+
+<div class="panel">
+
+<p>Monthly Yield Report</p>
+<p>Water Usage Report</p>
+<p>Crop Health Report</p>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

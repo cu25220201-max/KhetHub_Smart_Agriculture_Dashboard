@@ -1,0 +1,12 @@
+{
+  "farmArea": 25,
+  "activeCrops": 4,
+  "soilMoisture": 68,
+  "temperature": 31,
+
+  "alerts": [
+    "Low Moisture in Field 2",
+    "Rain Expected Tomorrow",
+    "Irrigation Scheduled at 6 PM"
+  ]
+}
