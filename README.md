@@ -78,7 +78,7 @@ This project was developed as part of the KhetHub Dashboard Challenge to demonst
 
 
 ## 📁 Project Structure
-
+```text
 KhetHub-Dashboard/
 │
 ├── index.html
@@ -86,7 +86,7 @@ KhetHub-Dashboard/
 ├── script.js
 ├── agriculture.json
 └── README.md
-
+```
 
 ## 🚀 How to Run
 
@@ -132,7 +132,7 @@ The dashboard will open in your browser.
 - Farmer Authentication System
 - Cloud Database Connectivity
 
-## Screenshot
+## Screenshots
 
 <img width="960" height="503" alt="image" src="https://github.com/user-attachments/assets/bc4141f5-9973-4c4d-abcd-76365b4663a4" />
 
